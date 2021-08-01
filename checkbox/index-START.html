@@ -104,17 +104,17 @@
   });
   window.addEventListener('keydown' , (e) => {
     e.keyCode === 16 ? isShiftHold = true : isShiftHold = false;
-    console.log(isShiftHold)
+    
   })
 
   window.addEventListener('keyup', (e) => {
     e.keyCode === 16 ? isShiftHold = false : isShiftHold = true;
-    console.log(isShiftHold)
+    
   })
  checkboxes.forEach(box => box.addEventListener('click' , (e) => {
-   console.log(e)
+   alert(e.pointerId)
  }))
-  console.log(checkboxes)
+  
 </script>
 </body>
 </html>
