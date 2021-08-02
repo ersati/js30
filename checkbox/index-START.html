@@ -98,6 +98,7 @@
 <script>
 
   const checkboxes = document.querySelectorAll('input');
+  const items = document.querySelectorAll('.item');
   let isShiftHold = false;
   checkboxes.forEach(element => {
     element.checked = true;
@@ -112,7 +113,11 @@
     
   })
  checkboxes.forEach(box => box.addEventListener('click' , (e) => {
-   alert(e.pointerId)
+  //  alert(e.pointerId)
+
+ }))
+ items.forEach(item => item.addEventListener('click', (e) => {
+   console.log(item.id)
  }))
   
 </script>
