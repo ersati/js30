@@ -101,9 +101,9 @@
   
   const items = document.querySelectorAll('.item');
   let isShiftHold = false;
-  checkboxes.forEach(element => {
-    element.checked = true;
-  });
+  // checkboxes.forEach(element => {
+  //   element.checked = true;
+  // });
   window.addEventListener('keydown' , (e) => {
     e.keyCode === 16 ? isShiftHold = true : isShiftHold = false;
     
@@ -126,7 +126,8 @@
      console.log('inside')
     const minToMax = indexArr.sort(function(a, b){return a - b})
     console.log(minToMax)
-
+      for(let i = minToMax[0]; i < minToMax[1]; i++ )
+      checkboxes[i].checked = true
   }
   console.log(index)
 
