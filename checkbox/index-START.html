@@ -98,6 +98,7 @@
 <script>
 
   const checkboxes = document.querySelectorAll('input');
+  
   const items = document.querySelectorAll('.item');
   let isShiftHold = false;
   checkboxes.forEach(element => {
@@ -112,13 +113,26 @@
     e.keyCode === 16 ? isShiftHold = false : isShiftHold = true;
     
   })
- checkboxes.forEach(box => box.addEventListener('click' , (e) => {
-  //  alert(e.pointerId)
+
+  const indexArr = []
+  
+ checkboxes.forEach((box, index )=> box.addEventListener('click' , (e) => {
+  if(indexArr.length< 2){
+    indexArr.push(index);
+    console.log(indexArr)
+  }
+
+  if(indexArr.length === 2){
+     console.log('inside')
+    const minToMax = indexArr.sort(function(a, b){return a - b})
+    console.log(minToMax)
+
+  }
+  console.log(index)
+
 
  }))
- items.forEach(item => item.addEventListener('click', (e) => {
-   console.log(item.id)
- }))
+
   
 </script>
 </body>
