@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Hold Shift to Check Multiple Checkboxes</title>
 </head>
+
 <body>
   <style>
-
     html {
       font-family: sans-serif;
       background: #ffc600;
@@ -17,7 +18,7 @@
       margin: 50px auto;
       background: white;
       border-radius: 5px;
-      box-shadow: 10px 10px 0 rgba(0,0,0,0.1);
+      box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.1);
     }
 
     .item {
@@ -30,7 +31,7 @@
       border-bottom: 0;
     }
 
-    input:checked + p {
+    input:checked+p {
       background: #F9F9F9;
       text-decoration: line-through;
     }
@@ -44,13 +45,13 @@
       padding: 20px;
       transition: background 0.2s;
       flex: 1;
-      font-family:'helvetica neue';
+      font-family: 'helvetica neue';
       font-size: 20px;
       font-weight: 200;
       border-left: 1px solid #D1E2FF;
     }
   </style>
-   <!--
+  <!--
    The following is a common layout you would see in an email client.
 
    When a user clicks a checkbox, holds Shift, and then clicks another checkbox a few rows down, all the checkboxes inbetween those two checkboxes should be checked.
@@ -95,46 +96,43 @@
     </div>
   </div>
 
-<script>
+  <script>
+    const checkboxes = document.querySelectorAll('input');
 
-  const checkboxes = document.querySelectorAll('input');
-  
-  const items = document.querySelectorAll('.item');
-  let isShiftHold = false;
-  // checkboxes.forEach(element => {
-  //   element.checked = true;
-  // });
-  window.addEventListener('keydown' , (e) => {
-    e.keyCode === 16 ? isShiftHold = true : isShiftHold = false;
-    
-  })
+    const items = document.querySelectorAll('.item');
+    let isShiftHold = false;
+   
+    window.addEventListener('keydown', (e) => {
+      e.keyCode === 16 ? isShiftHold = true : isShiftHold = false;
 
-  window.addEventListener('keyup', (e) => {
-    e.keyCode === 16 ? isShiftHold = false : isShiftHold = true;
-    
-  })
+    })
+    window.addEventListener('keyup', (e) => {
+      e.keyCode === 16 ? isShiftHold = false : isShiftHold = true;
 
-  const indexArr = []
-  
- checkboxes.forEach((box, index )=> box.addEventListener('click' , (e) => {
-  if(indexArr.length< 2){
-    indexArr.push(index);
-    console.log(indexArr)
-  }
-
-  if(indexArr.length === 2){
-     console.log('inside')
-    const minToMax = indexArr.sort(function(a, b){return a - b})
-    console.log(minToMax)
-      for(let i = minToMax[0]; i < minToMax[1]; i++ )
-      checkboxes[i].checked = true
-  }
-  console.log(index)
-
-
- }))
-
-  
-</script>
+    })
+    let indexArr = []
+    checkboxes.forEach((box, index) => box.addEventListener('click', (e) => {
+      if (isShiftHold) {
+        if (indexArr.length < 2) {
+          indexArr.push(index);
+          console.log(indexArr)
+        }
+        if (indexArr.length === 2) {
+          console.log('inside')
+          let minToMax = indexArr.sort(function (a, b) {
+            return a - b
+          })
+          console.log(minToMax)
+          for (let i = minToMax[0]; i < minToMax[1]; i++)
+            checkboxes[i].checked = true
+        }
+        if (indexArr.length >= 2) {
+          indexArr = [];
+        }
+        console.log(index)
+      }
+    }))
+  </script>
 </body>
+
 </html>
