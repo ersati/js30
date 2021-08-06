@@ -7,21 +7,27 @@ const volumeBar = document.querySelector('input[name="volume"]');
 const playbackRate = document.querySelector('input[name="playbackRate"]')
 const playPauseButton = document.querySelector('.player__button');
 
-
-function videoTime(){
-    console.log(video.currentTime)
+function videoTime(stop){
+    console.log(video.currentTime, video.duration)
     let time = video.currentTime;
-
-    let timerId = setInterval(() => console.log(video.currentTime), 1000);
+    
+    let timerId = setInterval(() => {
+        console.log(video.currentTime)
+        if(video.paused) clearInterval(timerId)
+    }
+    , 1000);
+    
 }
 function playVideo(){
     if(video.paused){
         video.play()
+        console.log(video.duration)
         
         videoTime();
         playPauseButton.textContent = '⏸'
     }else {
         video.pause()
+        videoTime('stop')
         playPauseButton.textContent = '▶'
     }
 
