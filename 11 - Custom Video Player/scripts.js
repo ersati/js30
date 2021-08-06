@@ -4,6 +4,7 @@ const player = document.querySelector(".player");
 const video = document.querySelector(".player__video");
 const progressTimeBar = document.querySelector('.progress__filled');
 const volumeBar = document.querySelector('input[name="volume"]');
+const playbackRate = document.querySelector('input[name="playbackRate"]')
 const playPauseButton = document.querySelector('.player__button');
 
 
@@ -31,4 +32,8 @@ function playVideo(){
 playPauseButton.addEventListener('click', playVideo);
 volumeBar.addEventListener('change', () => {
     video.volume = volumeBar.value;
+})
+
+playbackRate.addEventListener('change', () => {
+    video.playbackRate = playbackRate.value;
 })
