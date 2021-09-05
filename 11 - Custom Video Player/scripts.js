@@ -10,9 +10,11 @@ const playPauseButton = document.querySelector('.player__button');
 function videoTime(stop){
     console.log(video.currentTime, video.duration)
     let time = video.currentTime;
-    
     let timerId = setInterval(() => {
-        console.log(video.currentTime)
+        // console.log(video.currentTime)
+        let curTimeBar = Math.round((video.currentTime / video.duration) * 100)
+        console.log(curTimeBar)
+        progressTimeBar.style.flexBasis = `${curTimeBar}%`
         if(video.paused) clearInterval(timerId)
     }
     , 1000);
