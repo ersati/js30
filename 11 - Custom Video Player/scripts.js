@@ -66,3 +66,8 @@ playbackRate.addEventListener('change', () => {
 
 reverseButton.addEventListener('click', reverseVideo)
 forwardButton.addEventListener('click', forwardVideo)
+
+document.querySelector('.progress').addEventListener('click', (e) => {
+    const progressTime = (e.offsetX /document.querySelector('.progress').offsetWidth)* video.duration;
+    video.currentTime = progressTime
+})
