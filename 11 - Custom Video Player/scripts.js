@@ -46,13 +46,13 @@ function playVideo(){
 function reverseVideo() {
 curTimeBar = curTimeBar - 10;
 video.currentTime -= 10;
-progressTimeBar.style.flexBasis = `${curTimeBar}%`
+// progressTimeBar.style.flexBasis = `${curTimeBar}%`
 }
 
 function forwardVideo() {
     curTimeBar = curTimeBar + 25;
     video.currentTime += 25;
-    progressTimeBar.style.flexBasis = `${curTimeBar}%`
+    // progressTimeBar.style.flexBasis = `${curTimeBar}%`
     }
 
 playPauseButton.addEventListener('click', playVideo);
