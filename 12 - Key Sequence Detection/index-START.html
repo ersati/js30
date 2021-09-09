@@ -3,13 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <title>Key Detection</title>
-  <script type="text/javascript" src="https://www.cornify.com/js/cornify.js"></script>
+  <!-- <script type="text/javascript" src="https://www.cornify.com/js/cornify.js"></script> -->
 </head>
 <body>
 <script>
+// const passed = [1,2,3,4,5,6,7,8,9,0];
+const passed = []
 
+const res = passed.splice(-4, 3);
+console.log(res)
+const securityCode = 'pacman'
   window.addEventListener('keyup', (e) =>{
-    console.log(e.key)
+    passed.push(e.key)
+    passed.splice(-securityCode.length -1, passed.length - securityCode.length)
+    console.log(passed)
+    console.log(e.key, -securityCode.length -1)
   })
 </script>
 </body>
