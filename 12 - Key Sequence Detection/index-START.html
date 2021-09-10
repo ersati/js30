@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Key Detection</title>
-  <!-- <script type="text/javascript" src="https://www.cornify.com/js/cornify.js"></script> -->
+  <script type="text/javascript" src="https://www.cornify.com/js/cornify.js"></script>
 </head>
 <body>
 <script>
@@ -17,7 +17,11 @@ const securityCode = 'pacman'
     passed.push(e.key)
     passed.splice(-securityCode.length -1, passed.length - securityCode.length)
     console.log(passed)
-    console.log(e.key, -securityCode.length -1)
+    // console.log(e.key, -securityCode.length -1)
+    if(passed.join('') === securityCode){
+      console.log('DING DING')
+      cornify_add();
+    }
   })
 </script>
 </body>
