@@ -62,8 +62,16 @@
 
     function checkImage (e) {
       console.log(window.scrollY)
+      console.log(window.innerHeight);
+      console.log(images[0].height);
+      console.log((window.scrollY + window.innerHeight) - images[0].height / 2)
+      const sliderIn = 's'
+      console.log(images[1].offsetTop)
+      
+      
     }
-    function checkImage()
+    
+
     window.addEventListener('scroll', checkImage);
 
   
