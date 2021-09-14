@@ -202,7 +202,7 @@
     }
 
 
-    window.addEventListener('scroll', checkImage);
+    window.addEventListener('scroll', debounce(checkImage));
   </script>
 
   <style>
