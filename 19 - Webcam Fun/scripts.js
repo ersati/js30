@@ -47,8 +47,16 @@ function takePhoto () {
 function redEffect(pixels) {
     for(let i = 0; i < pixels.data.length; i +=4){
         pixels.data[i + 0]= pixels.data[i + 0] + 100;
-        pixels.data[i + 1]= pixels.data[i + 1] - 50
-        pixels.data[i + 2]= pixels.data[i + 2] * 0.5
+        pixels.data[i + 1]= pixels.data[i + 1] - 50;
+        pixels.data[i + 2]= pixels.data[i + 2] * 0.5;
+    }
+}
+
+function rgbSplit(pixels) {
+    for(let i = 0; i < pixels.data.length; i +=4){
+        pixels.data[i - 150]= pixels.data[i + 0] ;
+        pixels.data[i + 100]= pixels.data[i + 1] ;
+        pixels.data[i - 550]= pixels.data[i + 2] ;
     }
 }
 getVideo()
