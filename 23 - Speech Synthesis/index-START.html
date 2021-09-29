@@ -22,7 +22,7 @@
       <label for="pitch">Pitch:</label>
 
       <input name="pitch" type="range" min="0" max="2" step="0.1">
-      <textarea name="text">Hello! I love sex 👍</textarea>
+      <textarea name="text">Hello! I love javascript 👍</textarea>
       <button id="stop">Stop!</button>
       <button id="speak">Speak</button>
 
@@ -30,6 +30,7 @@
 
 <script>
   const msg = new SpeechSynthesisUtterance();
+  console.log(msg)
   let voices = [];
   const voicesDropdown = document.querySelector('[name="voice"]');
   const options = document.querySelectorAll('[type="range"], [name="text"]');
@@ -44,8 +45,6 @@
     
     const options = voices.map( voice => `<option value="${voice.name}"> ${voice.name} ${voice.lang} </option>`).join('')
     voicesDropdown.innerHTML = options;
-    // console.log(options)
-    // console.log(voices.map( voice => `<option value="${voice.name}"> ${voice.name} ${voice.lang} </option>`).join('')) 
   }
   function setVoice(){
 
@@ -56,13 +55,20 @@
 
   }
 
-  function toggle(){
-    speechSynthesis.speak(msg);
+  function toggle(startOver = true){
+    speechSynthesis.cancel()
+    if(startOver) speechSynthesis.speak(msg);
+  }
+
+  function setOptions(){
+    console.log(this.name, this.value)
+    msg[this.name] = this.value
   }
   speechSynthesis.addEventListener('voiceschanged', populateVoiced);
-  speakButton.addEventListener('click', toggle);
   voicesDropdown.addEventListener('change', setVoice);
-  // options.forEach(option => option.addEventListener('change', setVoices))
+  options.forEach(option => option.addEventListener('change', setOptions))
+  speakButton.addEventListener('click', toggle);
+  stopButton.addEventListener('click', () => toggle(false))
   
 
 </script>
