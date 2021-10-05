@@ -232,6 +232,18 @@ function handleEnter(){
   background.classList.add('open')
   const dropdown = this.querySelector('.dropdown')
   console.log(dropdown)
+  const dropdownCoords = dropdown.getBoundingClientRect();
+  const navCords = nav.getBoundingClientRect();
+  const coords = {
+    height: dropdownCoords.height,
+    width: dropdownCoords.width,
+    top: dropdownCoords.top - navCords.top,
+    left: dropdownCoords.left - navCords.left,
+  }
+
+  background.style.setProperty('width', `${coords.width}px`);
+  background.style.setProperty('height', `${coords.height}px`);
+  background.style.setProperty('transform', `translate(${coords.left}px, ${coords.top}px)`)
 }
 
 function handleLeave(){
