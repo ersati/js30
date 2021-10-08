@@ -17,10 +17,20 @@
 <script>
   const video = document.querySelector('.flex');
   const speed = document.querySelector('.speed');
-  const bar = document.querySelector('.speed-bar')
+  const bar = document.querySelector('.speed-bar');
 
-  speed.addEventListener('mousedown', (e) =>{
-console.log(e.pageY,speed.offsetTop)
+  speed.addEventListener('mousemove', (e) =>{
+    const y = e.pageY - speed.offsetTop;
+    const procent = y / speed.offsetHeight;
+    const min = 0.4;
+    const max = 4; 
+    const height = Math.round(procent * 100) + '%';
+    bar.style.height = height
+    const playbackRate = procent * (max - min) + min;
+    bar.textContent = playbackRate.toFixed(2)
+    video.playbackRate = playbackRate
+    console.log()
+// console.log(e.pageY,speed.offsetTop)
   })
 </script>
 </body>
