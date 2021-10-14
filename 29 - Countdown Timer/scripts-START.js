@@ -69,18 +69,11 @@ function startTimer() {
 }
 buttons.forEach(btn => btn.addEventListener('click', startTimer))
 
-// document.customForm.addEventListener('submit', function (e) {
-//     e.preventDefault()
-//     const mins = this.minutes.values;
-//     console.log(mins,this)
-//     timer(mins * 60);
-//     this.reset()
-// })
-
-document.customForm.addEventListener('submit', function(e) {
-    e.preventDefault();
+document.customForm.addEventListener('submit', function (e) {
+    e.preventDefault()
     const mins = this.minutes.value;
-    console.log(mins);
+    console.log(mins,this)
     timer(mins * 60);
-    this.reset();
-  });
+    this.reset()
+})
+
